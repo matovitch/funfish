@@ -1,4 +1,4 @@
 function ffcpl_simple
-    ffwrap "$argv[1] ($argv[2] @@)"
+    ffwrap "$argv[2] ($argv[1] @@)"
 end
 
