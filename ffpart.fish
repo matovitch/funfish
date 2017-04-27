@@ -1,12 +1,10 @@
 function ffpart
-    function toWrap
-        echo (echo $argv | sed 's/@/\\\\@/g')" @@"
-    end
+    set fun (echo $argv[1] | sed 's/@/\\\\@/g')" @@"
     
     if begin; test (count $argv) -gt 1; end
-        ffwrap (toWrap $argv[2]) $argv[1]
+        ffwrap $fun $argv[2]
     else
-        ffwrap (toWrap $argv[1])
+        ffwrap $fun
     end
 end
 

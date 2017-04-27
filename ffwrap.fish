@@ -7,10 +7,6 @@ function ffwrap
         set fun "$fun @@"
     end
 
-    if echo $fun | head -c 1 | grep '(' > /dev/null ^&1
-        set fun "eval $fun"
-    end
-
     set fun (echo $fun | sed 's/@@/\$argv/g')
     set fun (echo $fun | sed 's/@\([0-9]\)/\$argv[\1]/g')
     
