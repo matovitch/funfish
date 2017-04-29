@@ -15,6 +15,7 @@ Allows you to wrap a lambda-like expressions and give them a name (a true shame 
 > eval (ffwrap 'math @1 + @2') 2 3
 5
 ```
+Note: You can use `@1` to `@9`, and use `@@` to denote the full list of arguments.
 ##### ffmap
 The usual map from the functional realm.
 
@@ -35,22 +36,26 @@ For crafting a partial application.
 ##### fffoldl and fffoldr
 foldl and foldr, works as you expect:
 ```fish
->fffoldl 'echo @1@2' "" "is" " Yoda " "a great jedi"
+>fffoldl 'echo @1@2' "is" " Yoda " "a great jedi"
 is Yoda a great jedi
->fffoldr 'echo @1@2' "" "is" " Yoda " "a great jedi"
+>fffoldr 'echo @1@2' "is" " Yoda " "a great jedi"
 a great jedi Yoda is
 ```
 ##### ffcpl and ffcpr
 These are for left and right compositions (takes an arbitrary number of functions).
-<pre>
+
+```fish
 > ffwrap 'echo @2 | grep @1' match
 > ffpart 'match "tes"' match_tes
 > ffpart 'match "es"' match_es
 > eval (ffcpl match_tes match_es) "test"
-t<b>es</b>t
+```
+<pre>t<b>es</b>t</pre>
+
+```fish
 > eval (ffcpr match_tes match_es) "test"
-<b>tes</b>t
-</pre>
+```
+<pre><b>tes</b>t</pre>
 
 ##### ffpipe
 A pipe to connect to other shell commands.
@@ -58,3 +63,20 @@ A pipe to connect to other shell commands.
 > echo "2 3" | ffpipe (ffwrap 'math @1 + @2')
 5
 ```
+
+#### Small trick for currying
+
+If you want to use the string  `"@1"` in a `ffwrap(ped)` expression, you need to escape it like so:
+
+```fish
+> eval (ffwrap 'echo "escapedAt\@123.org"')
+escapedAt@123.org
+```
+
+But you can use this escape mechanism to get curryfied labmda expressions:
+
+```fish
+> ffwrap 'ffwrap "echo \@@ | grep @1"' curryfied_match
+> eval (curryfied_match "Curry") "Haskell Curry"
+```
+<pre>Haskell <b>Curry</b></pre>
