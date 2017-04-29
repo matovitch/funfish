@@ -3,7 +3,7 @@
 Small set of fish functions to use lambda-like expressions in your fish shell.
 
 ## Examples
-###### ffwrap
+##### ffwrap
 Allows you to wrap a lambda-like expressions and give them a name (a true shame for a lambda) or not.
 
 ```fish
@@ -15,7 +15,7 @@ Allows you to wrap a lambda-like expressions and give them a name (a true shame 
 > eval (ffwrap 'math @1 + @2') 2 3
 5
 ```
-###### ffmap
+##### ffmap
 The usual map from the functional realm.
 
 ```fish
@@ -24,7 +24,7 @@ The usual map from the functional realm.
 3
 4
 ```
-###### ffpart
+##### ffpart
 For crafting a partial application.
 ```fish
 > ffwrap 'math @1 + @2' add
@@ -32,7 +32,7 @@ For crafting a partial application.
 > add2 3
 5
 ```
-###### fffoldl and fffoldr
+##### fffoldl and fffoldr
 foldl and foldr, works as you expect:
 ```fish
 >fffoldl 'echo @1@2' "" "is" " Yoda " "a great jedi"
@@ -40,7 +40,7 @@ is Yoda a great jedi
 >fffoldr 'echo @1@2' "" "is" " Yoda " "a great jedi"
 a great jedi Yoda is
 ```
-###### ffcpl and ffcpr
+##### ffcpl and ffcpr
 These are for left and right compositions (takes an arbitrary number of functions).
 <pre>
 > ffwrap 'echo @2 | grep @1' match
@@ -52,8 +52,8 @@ t<b>es</b>t
 <b>tes</b>t
 </pre>
 
-###### ffpipe
-
+##### ffpipe
+A pipe to connect to other shell commands.
 ```fish
 > echo "2 3" | ffpipe (ffwrap 'math @1 + @2')
 5
