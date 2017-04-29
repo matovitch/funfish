@@ -41,16 +41,20 @@ is Yoda a great jedi
 a great jedi Yoda is
 ```
 ###### ffcpl and ffcpr
-These are for left and right compositions
+These are for left and right compositions (takes an arbitrary number of functions).
 <pre>
 > ffwrap 'echo @2 | grep @1' match
 > ffpart 'match "tes"' match_tes
 > ffpart 'match "es"' match_es
 > eval (ffcpl match_tes match_es) "test"
-t<b>es<\b>t
+t<b>es</b>t
 > eval (ffcpr match_tes match_es) "test"
-<b>tes<\b>t
-<\pre>
+<b>tes</b>t
+</pre>
 
 ###### ffpipe
 
+```fish
+> echo "2 3" | ffpipe (ffwrap 'math @1 + @2')
+5
+```
