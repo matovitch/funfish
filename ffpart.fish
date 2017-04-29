@@ -7,4 +7,3 @@ function ffpart
         ffwrap $fun
     end
 end
-

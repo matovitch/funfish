@@ -7,7 +7,7 @@ function fffoldl
         set tmp $argv[2]
 
         for arg in $argv[3..-1]
-            set tmp (eval $fun $tmp $arg)
+            set tmp (eval $fun '$tmp' '$arg')
         end
 
         echo $tmp
