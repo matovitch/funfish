@@ -2,7 +2,22 @@
 
 Small set of fish functions to use lambda-like expressions in your fish shell.
 
-## Examples
+## How do I get it ?
+
+With [fisherman](https://github.com/fisherman/fisherman), simply do:
+
+```
+fisher matovitch/funfish
+```
+
+Our without...not really recommended, but something like this should:
+
+```
+git clone https://github.com/matovitch/funfish
+cat funfish/*.fish >> config.fish
+```
+
+## How does it work ?
 ##### ffwrap
 Allows you to wrap a lambda-like expressions and give them a name (a true shame for a lambda) or not.
 
@@ -73,7 +88,7 @@ If you want to use the string  `"@1"` in a `ffwrap(ped)` expression, you need to
 escapedAt@123.org
 ```
 
-But you can use this escape mechanism to get curryfied labmda expressions:
+But you can use this escape mechanism to get curryfied functions:
 
 ```fish
 > ffwrap 'ffwrap "echo \@@ | grep @1"' curryfied_match
