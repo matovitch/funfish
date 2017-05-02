@@ -10,7 +10,7 @@ With [fisherman](https://github.com/fisherman/fisherman), simply do:
 fisher matovitch/funfish
 ```
 
-Our without...not really recommended, but something like this should:
+Our without...not really recommended, but something like this should work:
 
 ```
 git clone https://github.com/matovitch/funfish
